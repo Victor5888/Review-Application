@@ -1,16 +1,21 @@
-function FeedbackStats({ feedback }) {
+import { useContext } from 'react';
+import FeedbackContext from '../context/FeedbackContext';
+
+function FeedbackStats() {
   ///=============calculating the average with reduce ============================
+  const { feedback } = useContext(FeedbackContext);
 
   let average =
     feedback.reduce((acc, cur) => {
       return acc + cur.rating;
     }, 0) / feedback.length;
-  average.toFixed(1);
+  average = Math.round(average * 10) / 10;
+  console.log();
 
   return (
     <div className="feedback-stats">
       <h4>{feedback.length} Reviews</h4>
-      <h4>Average ratings : {isNaN(average) ? 0 : average} </h4>
+      <h4>Average ratings : {average} </h4>
     </div>
   );
 }
