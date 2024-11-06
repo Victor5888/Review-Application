@@ -15,10 +15,9 @@ function FeebbackForm() {
   useEffect(() => {
     if (feedbackEdit.edit === true) {
       setBtnDisabled(false);
-      {
-        setText(feedbackEdit.item.text);
-        setRating(feedbackEdit.item.rating);
-      }
+
+      setText(feedbackEdit.item.text);
+      setRating(feedbackEdit.item.rating);
     }
   }, [feedbackEdit]);
 
